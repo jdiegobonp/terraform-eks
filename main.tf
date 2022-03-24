@@ -55,7 +55,7 @@ data "aws_iam_policy_document" "eks_data_policy" {
 resource "aws_iam_role" "iam_eks_cluster" {
   name               = "${var.project}-eks-role"
   assume_role_policy = data.aws_iam_policy_document.eks_data_policy.json
-  tags = var.tags
+  tags               = var.tags
 }
 
 resource "aws_iam_role_policy_attachment" "eks_AmazonEKSClusterPolicy" {
@@ -80,7 +80,7 @@ data "aws_iam_policy_document" "eks_node_group_data_policy" {
 }
 
 resource "aws_iam_role" "iam_role_eks_node_group" {
-  name = "${var.project}-eks-node-group-role"
+  name               = "${var.project}-eks-node-group-role"
   assume_role_policy = data.aws_iam_policy_document.eks_node_group_data_policy.json
 }
 
